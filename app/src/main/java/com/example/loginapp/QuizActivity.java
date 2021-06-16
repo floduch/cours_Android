@@ -43,7 +43,7 @@ public class QuizActivity extends AppCompatActivity {
 
 
 
-        question.setText();
+        question.setText("Qui est le président de la France");
         rep1.setText("François HOLLANDE");
         rep2.setText("Jacque CHIRAC");
         rep3.setText("Emmanuel MACRON");
