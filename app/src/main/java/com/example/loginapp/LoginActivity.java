@@ -3,7 +3,10 @@ package com.example.loginapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -12,6 +15,18 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        EditText
+        EditText identifiant = findViewById(R.id.editId);
+        EditText password = findViewById(R.id.editPass);
+
+        Button connect = findViewById(R.id.buttonConnect);
+
+        connect.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Toast myToast = Toast.makeText(LoginActivity.this,  "Bonjour "+ identifiant.getText().toString(), Toast.LENGTH_SHORT);
+                myToast.show();
+
+            }
+        });
     }
 }
