@@ -26,12 +26,19 @@ public class LoginActivity extends AppCompatActivity {
         connect.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Toast myToast = Toast.makeText(LoginActivity.this,  "Bonjour "+ identifiant.getText().toString(), Toast.LENGTH_SHORT);
-                myToast.show();
+                if (identifiant.getText().toString().equals("florian") && password.getText().toString().equals("duchaine")){
 
-                mainActivity.putExtra("id", identifiant.getText().toString());
-                mainActivity.putExtra("pass", password.getText().toString());
-                startActivity(mainActivity);
+                    Toast myToast = Toast.makeText(LoginActivity.this,  "Bonjour "+ identifiant.getText().toString(), Toast.LENGTH_SHORT);
+                    myToast.show();
+
+                    mainActivity.putExtra("id", identifiant.getText().toString());
+                    mainActivity.putExtra("pass", password.getText().toString());
+                    startActivity(mainActivity);
+                } else {
+                    Toast myToast = Toast.makeText(LoginActivity.this,  "Identifiant ou mot de passe incorrect", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }
+
 
             }
         });
