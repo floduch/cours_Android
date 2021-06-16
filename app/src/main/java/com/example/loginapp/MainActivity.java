@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -34,9 +36,16 @@ public class MainActivity extends AppCompatActivity {
 
         TextView text = findViewById(R.id.text);
 
-        text.setText("Bienvenue "+ id + ", votre mot de passe est "+pass);
+        if (Locale.getDefault().getDisplayLanguage().equals("en")){
+
+            text.setText("Welcome " + id + ", your password is " + pass);
+
+        } else {
+            text.setText("Bienvenue " + id + ", votre mot de passe est " + pass);
+        }
 
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {

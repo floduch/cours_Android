@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -28,18 +30,35 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (identifiant.getText().toString().equals("florian") && password.getText().toString().equals("duchaine")){
 
-                    Toast myToast = Toast.makeText(LoginActivity.this,  "Bonjour "+ identifiant.getText().toString(), Toast.LENGTH_SHORT);
-                    myToast.show();
+                    if (Locale.getDefault().getDisplayLanguage().equals("en")){
 
-                    mainActivity.putExtra("id", identifiant.getText().toString());
-                    mainActivity.putExtra("pass", password.getText().toString());
-                    startActivity(mainActivity);
+                        Toast myToast = Toast.makeText(LoginActivity.this,  "Bonjour "+ identifiant.getText().toString(), Toast.LENGTH_SHORT);
+                        myToast.show();
+
+                        mainActivity.putExtra("id", identifiant.getText().toString());
+                        mainActivity.putExtra("pass", password.getText().toString());
+                        startActivity(mainActivity);
+
+                    } else {
+                        Toast myToast = Toast.makeText(LoginActivity.this,  "Identifiant ou mot de passe incorrect", Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
+
                 } else {
-                    Toast myToast = Toast.makeText(LoginActivity.this,  "Identifiant ou mot de passe incorrect", Toast.LENGTH_SHORT);
-                    myToast.show();
+
+                    if (Locale.getDefault().getDisplayLanguage().equals("en")){
+                        Toast myToast = Toast.makeText(LoginActivity.this,  "Hello "+ identifiant.getText().toString(), Toast.LENGTH_SHORT);
+                        myToast.show();
+
+                        mainActivity.putExtra("id", identifiant.getText().toString());
+                        mainActivity.putExtra("pass", password.getText().toString());
+                        startActivity(mainActivity);
+
+                    } else {
+                        Toast myToast = Toast.makeText(LoginActivity.this,  "Username or password is incorrect", Toast.LENGTH_SHORT);
+                        myToast.show();
+                    }
                 }
-
-
             }
         });
     }
