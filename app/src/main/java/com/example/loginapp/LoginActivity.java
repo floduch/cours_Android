@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         connect.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (identifiant.getText().toString().equals("florian") && password.getText().toString().equals("duchaine")){
+                if (verif(identifiant.getText().toString(), password.getText().toString())){
 
                     if (Locale.getDefault().getDisplayLanguage().equals("en")){
 
@@ -61,5 +61,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public Boolean verif(String id, String pass){
+        if (id.equals("florian") && pass.equals("duchaine")){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
