@@ -4,4 +4,7 @@
     <string name="pass">Mot de passe</string>
     <string name="connect">S\'authentifier</string>
     <string name="id">Identifiant</string>
+    <string name="continuer">Suivant</string>
+    <string name="relative">RelativeLayout</string>
+    <string name="quiz">Quizz</string>
 </resources>

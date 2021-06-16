@@ -32,16 +32,17 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (Locale.getDefault().getDisplayLanguage().equals("en")){
 
+                        Toast myToast = Toast.makeText(LoginActivity.this,  "Identifiant ou mot de passe incorrect", Toast.LENGTH_SHORT);
+                        myToast.show();
+
+                    } else {
+
                         Toast myToast = Toast.makeText(LoginActivity.this,  "Bonjour "+ identifiant.getText().toString(), Toast.LENGTH_SHORT);
                         myToast.show();
 
                         mainActivity.putExtra("id", identifiant.getText().toString());
                         mainActivity.putExtra("pass", password.getText().toString());
                         startActivity(mainActivity);
-
-                    } else {
-                        Toast myToast = Toast.makeText(LoginActivity.this,  "Identifiant ou mot de passe incorrect", Toast.LENGTH_SHORT);
-                        myToast.show();
                     }
 
                 } else {

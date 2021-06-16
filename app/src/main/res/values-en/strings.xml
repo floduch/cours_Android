@@ -4,4 +4,7 @@
     <string name="pass">Password</string>
     <string name="connect">Log in</string>
     <string name="id">Username</string>
+    <string name="continuer">Next</string>
+    <string name="relative">RelativeLayout</string>
+    <string name="quiz">Quizz</string>
 </resources>

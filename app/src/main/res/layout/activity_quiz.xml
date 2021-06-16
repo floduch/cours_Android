@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="10sp"
+        android:max="20"
+        android:progress="20"
+        android:indeterminate="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16sp"
+        android:layout_marginEnd="16sp"
+        app:layout_constraintTop_toBottomOf="@id/progressBar">
+
+        <ImageView
+            android:id="@+id/J1"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@mipmap/ic_launcher_lock_foreground_redblue"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/textJ1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Joueur 1"
+            android:layout_toRightOf="@id/J1"/>
+
+        <TextView
+            android:id="@+id/scoreJ1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/J1"
+            android:layout_below="@id/textJ1"/>
+
+        <ImageView
+            android:id="@+id/J2"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@mipmap/ic_launcher_foreground_lock"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/textJ2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Joueur 2"
+            android:layout_toLeftOf="@id/J2"/>
+
+        <TextView
+            android:id="@+id/scoreJ2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/J2"
+            android:layout_below="@id/textJ2"/>
+
+        <TextView
+            android:id="@+id/textQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_marginTop="40sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/J1"/>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:layout_marginTop="20sp"
+            android:text="1"
+            android:layout_below="@id/textQuestion"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:text="1"
+            android:layout_below="@id/button1"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:text="1"
+            android:layout_below="@id/button2"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="70sp"
+            android:text="1"
+            android:layout_below="@id/button3"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

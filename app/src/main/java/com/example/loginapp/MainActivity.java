@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         TextView text = findViewById(R.id.text);
 
+        Button next = findViewById(R.id.buttonNext);
+        Button quiz = findViewById(R.id.buttonQuiz);
+
         if (Locale.getDefault().getDisplayLanguage().equals("en")){
 
             text.setText("Welcome " + id + ", your password is " + pass);
@@ -44,6 +50,17 @@ public class MainActivity extends AppCompatActivity {
             text.setText("Bienvenue " + id + ", votre mot de passe est " + pass);
         }
 
+        next.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ComplexActivity.class));
+            }
+        });
+
+        quiz.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, QuizActivity.class));
+            }
+        });
     }
 
     @Override
