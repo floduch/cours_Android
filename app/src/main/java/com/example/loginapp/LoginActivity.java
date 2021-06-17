@@ -30,12 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (verif(identifiant.getText().toString(), password.getText().toString())){
 
-                    if (Locale.getDefault().getDisplayLanguage().equals("en")){
-
-                        Toast myToast = Toast.makeText(LoginActivity.this,  "Identifiant ou mot de passe incorrect", Toast.LENGTH_SHORT);
-                        myToast.show();
-
-                    } else {
+                    if (Locale.getDefault().getDisplayLanguage().equals("fr")){
 
                         Toast myToast = Toast.makeText(LoginActivity.this,  "Bonjour "+ identifiant.getText().toString(), Toast.LENGTH_SHORT);
                         myToast.show();
@@ -43,17 +38,24 @@ public class LoginActivity extends AppCompatActivity {
                         mainActivity.putExtra("id", identifiant.getText().toString());
                         mainActivity.putExtra("pass", password.getText().toString());
                         startActivity(mainActivity);
-                    }
 
-                } else {
+                    } else {
 
-                    if (Locale.getDefault().getDisplayLanguage().equals("en")){
                         Toast myToast = Toast.makeText(LoginActivity.this,  "Hello "+ identifiant.getText().toString(), Toast.LENGTH_SHORT);
                         myToast.show();
 
                         mainActivity.putExtra("id", identifiant.getText().toString());
                         mainActivity.putExtra("pass", password.getText().toString());
                         startActivity(mainActivity);
+
+                    }
+
+                } else {
+
+                    if (Locale.getDefault().getDisplayLanguage().equals("fr")){
+                        
+                        Toast myToast = Toast.makeText(LoginActivity.this,  "Identifiant ou mot de passe incorrect", Toast.LENGTH_SHORT);
+                        myToast.show();
 
                     } else {
                         Toast myToast = Toast.makeText(LoginActivity.this,  "Username or password is incorrect", Toast.LENGTH_SHORT);

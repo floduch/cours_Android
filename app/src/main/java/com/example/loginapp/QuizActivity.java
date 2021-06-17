@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,6 +28,16 @@ public class QuizActivity extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.ic_round_arrow_back_24);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        Bundle extras = getIntent().getExtras();
+        String noQ;
+        if (extras != null) {
+            noQ = extras.getString("noQ");
+
+            // and get whatever type user account id is
+        } else {
+            noQ = "0";
+        }
+
 
         TextView J1 = findViewById(R.id.textJ1);
         TextView J2 = findViewById(R.id.textJ2);
@@ -40,6 +51,8 @@ public class QuizActivity extends AppCompatActivity {
         Button rep2 = findViewById(R.id.button2);
         Button rep3 = findViewById(R.id.button3);
         Button rep4 = findViewById(R.id.button4);
+
+        ProgressBar progress = findViewById(R.id.progressBar);
 
 //
 
@@ -62,41 +75,49 @@ public class QuizActivity extends AppCompatActivity {
         HashMap<String, HashMap> listQuestRep = new HashMap<>();
         HashMap<Integer, HashMap> listRep = new HashMap<>();
 
-        HashMap<Integer, String> reponses = new HashMap<>();
-        reponses.put(0, "François Hollande");
-        reponses.put(1, "Jacques Chirac");
-        reponses.put(2, "Emmanuel Macron");
-        reponses.put(3, "La réponse D");
+        HashMap<Integer, String> reponsesQ1 = new HashMap<>();
+        reponsesQ1.put(0, "François Hollande");
+        reponsesQ1.put(1, "Jacques Chirac");
+        reponsesQ1.put(2, "Emmanuel Macron");
+        reponsesQ1.put(3, "La réponse D");
 
-        listQuestRep.put(questions.get(0), reponses);
+        HashMap<Integer, String> reponsesQ2 = new HashMap<>();
+        reponsesQ2.put(0, "Paris");
+        reponsesQ2.put(1, "Bangkok");
+        reponsesQ2.put(2, "Londres");
+        reponsesQ2.put(3, "Vientiane");
 
-        for (int i = 0; i < reponses.size(); i++) {
-            bout.get(bouton.get(i)).setText(reponses.get(i));
+        listQuestRep.put(questions.get(0), reponsesQ1);
+        listQuestRep.put(questions.get(1), reponsesQ2);
+
+        question.setText(questions.get(0));
+
+        for (int i = 0; i < reponsesQ1.size(); i++) {
+            bout.get(bouton.get(i)).setText(reponsesQ1.get(i));
         }
 
-        for (int i = 0; i < bouton.size(); i++){
+        for (int i = 0; i < bouton.size(); i++) {
             int finalI = i;
             bout.get(bouton.get(i)).setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
-                    if (bout.get(bouton.get(finalI)).getText().toString().equals("Emmanuel Macron")){
+                    if (bout.get(bouton.get(finalI)).getText().toString().equals("Emmanuel Macron")) {
                         bout.get(bouton.get(finalI)).setBackgroundColor(getResources().getColor(R.color.green));
+                        scoreJ1.setText("1");
+                        progress.setProgress(20);
+
 
                     } else {
                         bout.get(bouton.get(finalI)).setBackgroundColor(getResources().getColor(R.color.purple_500));
                     }
 
-                    for (int i = 0; i < bouton.size(); i++){
+                    for (int i = 0; i < bouton.size(); i++) {
                         bout.get(bouton.get(i)).setEnabled(false);
                     }
-                    
                 }
             });
         }
-
-
-
-        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

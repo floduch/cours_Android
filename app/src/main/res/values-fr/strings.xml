@@ -7,4 +7,5 @@
     <string name="continuer">Suivant</string>
     <string name="relative">RelativeLayout</string>
     <string name="quiz">Quizz</string>
+    <string name="valide">Valider</string>
 </resources>
