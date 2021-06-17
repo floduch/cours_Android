@@ -4,12 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -21,6 +26,7 @@ public class QuizActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_round_arrow_back_24);
         actionBar.setDisplayHomeAsUpEnabled(true);
+
 
         TextView J1 = findViewById(R.id.textJ1);
         TextView J2 = findViewById(R.id.textJ2);
@@ -35,20 +41,62 @@ public class QuizActivity extends AppCompatActivity {
         Button rep3 = findViewById(R.id.button3);
         Button rep4 = findViewById(R.id.button4);
 
-        ArrayList<String> quest= new ArrayList<>();
+//
 
-        String[][] questions = new String[2][4];
+        ArrayList<Button> bouton = new ArrayList<>();
+
+        for (int i = 0; i < 4; i++) {
+            bouton.add(new Button(getBaseContext()));
+        }
+
+        HashMap<Button, Button> bout = new HashMap<>();
+        bout.put(bouton.get(0), rep1);
+        bout.put(bouton.get(1), rep2);
+        bout.put(bouton.get(2), rep3);
+        bout.put(bouton.get(3), rep4);
+
+        HashMap<Integer, String> questions = new HashMap<>();
+        questions.put(0, "Qui est le président de la France ?");
+        questions.put(1, "Quelle est la capitale de la Thaïlande ?");
+
+        HashMap<String, HashMap> listQuestRep = new HashMap<>();
+        HashMap<Integer, HashMap> listRep = new HashMap<>();
+
+        HashMap<Integer, String> reponses = new HashMap<>();
+        reponses.put(0, "François Hollande");
+        reponses.put(1, "Jacques Chirac");
+        reponses.put(2, "Emmanuel Macron");
+        reponses.put(3, "La réponse D");
+
+        listQuestRep.put(questions.get(0), reponses);
+
+        for (int i = 0; i < reponses.size(); i++) {
+            bout.get(bouton.get(i)).setText(reponses.get(i));
+        }
+
+        for (int i = 0; i < bouton.size(); i++){
+            int finalI = i;
+            bout.get(bouton.get(i)).setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+
+                    if (bout.get(bouton.get(finalI)).getText().toString().equals("Emmanuel Macron")){
+                        bout.get(bouton.get(finalI)).setBackgroundColor(getResources().getColor(R.color.green));
+
+                    } else {
+                        bout.get(bouton.get(finalI)).setBackgroundColor(getResources().getColor(R.color.purple_500));
+                    }
+
+                    for (int i = 0; i < bouton.size(); i++){
+                        bout.get(bouton.get(i)).setEnabled(false);
+                    }
+                    
+                }
+            });
+        }
 
 
 
-
-
-        question.setText("Qui est le président de la France");
-        rep1.setText("François HOLLANDE");
-        rep2.setText("Jacque CHIRAC");
-        rep3.setText("Emmanuel MACRON");
-        rep4.setText("La réponse D");
-    }
+        }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
