@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public Boolean verif(String id, String pass){
-        if (id.equals("florian") && pass.equals("duchaine")){
+        if (id.equals("") && pass.equals("")){
             return true;
         }else {
             return false;

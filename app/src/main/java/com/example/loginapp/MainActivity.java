@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         quiz.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, QuizActivity.class));
+                startActivity(new Intent(MainActivity.this, DistrictActivity.class));
             }
         });
     }
