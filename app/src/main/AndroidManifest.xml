@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_lock_foreground_bluered"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginApp">
-        <activity android:name=".DistrictActivity"></activity>
+        <activity android:name=".DistrictActivity"/>
         <activity android:name=".QuizActivity" />
         <activity android:name=".ComplexActivity" />
         <activity android:name=".MainActivity" />

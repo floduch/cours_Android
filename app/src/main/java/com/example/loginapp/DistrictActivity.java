@@ -2,6 +2,7 @@ package com.example.loginapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.DropBoxManager;
@@ -33,8 +34,13 @@ public class DistrictActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                 Object o = gridView.getItemAtPosition(position);
                 District district = (District) o;
-                Toast.makeText(DistrictActivity.this, "Selected :"
-                        + " " + district, Toast.LENGTH_SHORT).show();
+                System.out.println(position);
+                Intent intent = new Intent(DistrictActivity.this, QuizActivity.class);
+                intent.putExtra("noQ", String.valueOf(position));
+
+                startActivity(intent);
+//                Toast.makeText(DistrictActivity.this, "Selected :"
+//                        + " " + district, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -42,8 +48,8 @@ public class DistrictActivity extends AppCompatActivity {
     private  List<District> getListData() {
         List<District> list = new ArrayList<District>();
         District district1 = new District(0, R.drawable.img_district1, "Louvre", "Le Louvre", 1, 1);
-        District district2 = new District(1, R.drawable.img_district2, "Bourse", "Bourse", 1, 1);
-        District district3 = new District(2, R.drawable.img_district3, "Temple", "Temple", 1, 1);
+        District district2 = new District(1, R.drawable.img_district16, "Tour Eiffel", "Tour Eiffel", 1, 1);
+        District district3 = new District(2, R.drawable.img_district4, "Hôtel de ville", "Hôtel de ville", 1, 1);
 
         list.add(district1);
         list.add(district2);

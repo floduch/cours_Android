@@ -54,6 +54,8 @@ public class QuizActivity extends AppCompatActivity {
 
         ProgressBar progress = findViewById(R.id.progressBar);
 
+        Button valider = findViewById(R.id.buttonVal);
+
 //
 
         ArrayList<Button> bouton = new ArrayList<>();
@@ -69,31 +71,51 @@ public class QuizActivity extends AppCompatActivity {
         bout.put(bouton.get(3), rep4);
 
         HashMap<Integer, String> questions = new HashMap<>();
-        questions.put(0, "Qui est le président de la France ?");
-        questions.put(1, "Quelle est la capitale de la Thaïlande ?");
+        questions.put(0, "Dans quelle ville se trouve le Louvres ?");
+        questions.put(1, "Quel est le prénom de Mr Eiffel");
+        questions.put(2, "En quelle année l'Hôtel de Ville a été construit ?");
 
         HashMap<String, HashMap> listQuestRep = new HashMap<>();
-        HashMap<Integer, HashMap> listRep = new HashMap<>();
 
         HashMap<Integer, String> reponsesQ1 = new HashMap<>();
-        reponsesQ1.put(0, "François Hollande");
-        reponsesQ1.put(1, "Jacques Chirac");
-        reponsesQ1.put(2, "Emmanuel Macron");
+        reponsesQ1.put(0, "Marseille");
+        reponsesQ1.put(1, "Reims");
+        reponsesQ1.put(2, "Paris");
         reponsesQ1.put(3, "La réponse D");
 
         HashMap<Integer, String> reponsesQ2 = new HashMap<>();
-        reponsesQ2.put(0, "Paris");
-        reponsesQ2.put(1, "Bangkok");
-        reponsesQ2.put(2, "Londres");
-        reponsesQ2.put(3, "Vientiane");
+        reponsesQ2.put(0, "Gérard");
+        reponsesQ2.put(1, "Griezmann");
+        reponsesQ2.put(2, "Jean");
+        reponsesQ2.put(3, "Gustave");
+
+        HashMap<Integer, String> reponsesQ3 = new HashMap<>();
+        reponsesQ3.put(0, "1000");
+        reponsesQ3.put(1, "1357");
+        reponsesQ3.put(2, "1899");
+        reponsesQ3.put(3, "2000");
+
+        ArrayList<String> bonneRep = new ArrayList<>();
+        bonneRep.add("Paris");
+        bonneRep.add("Gustave");
+        bonneRep.add("1357");
+
 
         listQuestRep.put(questions.get(0), reponsesQ1);
         listQuestRep.put(questions.get(1), reponsesQ2);
+        listQuestRep.put(questions.get(2), reponsesQ3);
 
-        question.setText(questions.get(0));
+        ArrayList<HashMap> listes = new ArrayList<>();
+        listes.add(listQuestRep.get(questions.get(0)));
+        listes.add(listQuestRep.get(questions.get(1)));
+        listes.add(listQuestRep.get(questions.get(2)));
+
+        question.setText(questions.get(Integer.parseInt(noQ)));
+
 
         for (int i = 0; i < reponsesQ1.size(); i++) {
-            bout.get(bouton.get(i)).setText(reponsesQ1.get(i));
+            System.out.println(listes.get(Integer.parseInt(noQ)).get(i));
+            bout.get(bouton.get(i)).setText(String.valueOf(listes.get(Integer.parseInt(noQ)).get(i)));
         }
 
         for (int i = 0; i < bouton.size(); i++) {
@@ -101,7 +123,7 @@ public class QuizActivity extends AppCompatActivity {
             bout.get(bouton.get(i)).setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
-                    if (bout.get(bouton.get(finalI)).getText().toString().equals("Emmanuel Macron")) {
+                    if (bout.get(bouton.get(finalI)).getText().toString().equals(bonneRep.get(Integer.parseInt(noQ)))) {
                         bout.get(bouton.get(finalI)).setBackgroundColor(getResources().getColor(R.color.green));
                         scoreJ1.setText("1");
                         progress.setProgress(20);
@@ -117,6 +139,11 @@ public class QuizActivity extends AppCompatActivity {
                 }
             });
         }
+        valider.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(QuizActivity.this, DistrictActivity.class));
+            }
+        });
     }
 
     @Override

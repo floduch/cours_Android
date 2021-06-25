@@ -1,10 +1,12 @@
 package com.example.loginapp;
+
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
@@ -49,20 +51,10 @@ public class CustomGridAdapter  extends BaseAdapter {
         }
 
         District district = this.listData.get(position);
-        holder.countryNameView.setText(district.getName());
+        holder.countryNameView.setText(district.getId()+" "+district.getName());
         holder.flagView.setImageResource(district.getImageRessourceId());
 
         return convertView;
-    }
-
-    // Find Image ID corresponding to the name of the image (in the directory mipmap).
-    public int getMipmapResIdByName(String resName)  {
-        String pkgName = context.getPackageName();
-
-        // Return 0 if not found.
-        int resID = context.getResources().getIdentifier(resName , "mipmap", pkgName);
-        Log.i("CustomGridView", "Res Name: "+ resName+"==> Res ID = "+ resID);
-        return resID;
     }
 
     static class ViewHolder {
