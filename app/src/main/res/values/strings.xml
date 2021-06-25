@@ -8,5 +8,8 @@
     <string name="relative">RelativeLayout</string>
     <string name="quiz">Quizz</string>
     <string name="valide">Valider</string>
+    <string name="j1">Joueur 1</string>
+    <string name="j2">Joueur 2</string>
+    <string name="accueil">Accueil</string>
 
 </resources>

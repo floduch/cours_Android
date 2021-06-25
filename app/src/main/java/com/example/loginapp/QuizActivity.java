@@ -29,21 +29,38 @@ public class QuizActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         Bundle extras = getIntent().getExtras();
-        String noQ;
+        String noQ, joueur;
+
+        final String[] score1 = new String[1];
+        final String[] score2 = new String[1];
+
         if (extras != null) {
             noQ = extras.getString("noQ");
+            joueur = extras.getString("joueur");
+            score1[0] = extras.getString("score1");
+            score2[0] = extras.getString("score2");
 
             // and get whatever type user account id is
         } else {
             noQ = "0";
+            joueur = "1";
+            score1[0] = "0";
+            score2[0] = "0";
         }
+        
+        System.out.println("joueur "+joueur);
 
+        Intent intent = new Intent(QuizActivity.this, DistrictActivity.class);
 
         TextView J1 = findViewById(R.id.textJ1);
         TextView J2 = findViewById(R.id.textJ2);
 
         TextView scoreJ1 = findViewById(R.id.scoreJ1);
         TextView scoreJ2 = findViewById(R.id.scoreJ2);
+
+        System.out.println(score1[0]);
+        scoreJ1.setText(score1[0]);
+        scoreJ2.setText(score2[0]);
 
         TextView question = findViewById(R.id.textQuestion);
 
@@ -125,8 +142,20 @@ public class QuizActivity extends AppCompatActivity {
 
                     if (bout.get(bouton.get(finalI)).getText().toString().equals(bonneRep.get(Integer.parseInt(noQ)))) {
                         bout.get(bouton.get(finalI)).setBackgroundColor(getResources().getColor(R.color.green));
-                        scoreJ1.setText("1");
-                        progress.setProgress(20);
+
+                        if (joueur.equals("1")){
+                            score1[0] = String.valueOf(Integer.parseInt(score1[0]) + 1);
+                            scoreJ1.setText(score1[0]);
+                            intent.putExtra("score1", scoreJ1.getText().toString());
+                            intent.putExtra("joueur", "1");
+                            intent.putExtra("score2", scoreJ2.getText().toString());
+                        }else {
+                            score2[0] = String.valueOf(Integer.parseInt(score2[0]) + 1);
+                            scoreJ2.setText(score2[0]);
+                            intent.putExtra("score2", scoreJ2.getText().toString());
+                            intent.putExtra("joueur", "2");
+                            intent.putExtra("score1", scoreJ1.getText().toString());
+                        }
 
 
                     } else {
@@ -141,7 +170,7 @@ public class QuizActivity extends AppCompatActivity {
         }
         valider.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(QuizActivity.this, DistrictActivity.class));
+                startActivity(intent);
             }
         });
     }

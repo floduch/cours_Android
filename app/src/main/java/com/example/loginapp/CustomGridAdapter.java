@@ -51,7 +51,7 @@ public class CustomGridAdapter  extends BaseAdapter {
         }
 
         District district = this.listData.get(position);
-        holder.countryNameView.setText(district.getId()+" "+district.getName());
+        holder.countryNameView.setText(district.getName());
         holder.flagView.setImageResource(district.getImageRessourceId());
 
         return convertView;
