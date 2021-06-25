@@ -47,8 +47,6 @@ public class QuizActivity extends AppCompatActivity {
             score1[0] = "0";
             score2[0] = "0";
         }
-        
-        System.out.println("joueur "+joueur);
 
         Intent intent = new Intent(QuizActivity.this, DistrictActivity.class);
 
@@ -69,8 +67,6 @@ public class QuizActivity extends AppCompatActivity {
         Button rep3 = findViewById(R.id.button3);
         Button rep4 = findViewById(R.id.button4);
 
-        ProgressBar progress = findViewById(R.id.progressBar);
-
         Button valider = findViewById(R.id.buttonVal);
 
 //
@@ -87,30 +83,30 @@ public class QuizActivity extends AppCompatActivity {
         bout.put(bouton.get(2), rep3);
         bout.put(bouton.get(3), rep4);
 
-        HashMap<Integer, String> questions = new HashMap<>();
-        questions.put(0, "Dans quelle ville se trouve le Louvres ?");
-        questions.put(1, "Quel est le prénom de Mr Eiffel");
-        questions.put(2, "En quelle année l'Hôtel de Ville a été construit ?");
+        ArrayList<String> questions = new ArrayList<>();
+        questions.add("Dans quelle ville se trouve le Louvres ?");
+        questions.add("Quel est le prénom de Mr Eiffel");
+        questions.add("En quelle année l'Hôtel de Ville a été construit ?");
 
-        HashMap<String, HashMap> listQuestRep = new HashMap<>();
+        HashMap<String, ArrayList> listQuestRep = new HashMap<>();
 
-        HashMap<Integer, String> reponsesQ1 = new HashMap<>();
-        reponsesQ1.put(0, "Marseille");
-        reponsesQ1.put(1, "Reims");
-        reponsesQ1.put(2, "Paris");
-        reponsesQ1.put(3, "La réponse D");
+        ArrayList<String> reponsesQ1 = new ArrayList<>();
+        reponsesQ1.add("Marseille");
+        reponsesQ1.add("Reims");
+        reponsesQ1.add("Paris");
+        reponsesQ1.add("La réponse D");
 
-        HashMap<Integer, String> reponsesQ2 = new HashMap<>();
-        reponsesQ2.put(0, "Gérard");
-        reponsesQ2.put(1, "Griezmann");
-        reponsesQ2.put(2, "Jean");
-        reponsesQ2.put(3, "Gustave");
+        ArrayList<String> reponsesQ2 = new ArrayList<>();
+        reponsesQ2.add("Gérard");
+        reponsesQ2.add("Griezmann");
+        reponsesQ2.add("Jean");
+        reponsesQ2.add("Gustave");
 
-        HashMap<Integer, String> reponsesQ3 = new HashMap<>();
-        reponsesQ3.put(0, "1000");
-        reponsesQ3.put(1, "1357");
-        reponsesQ3.put(2, "1899");
-        reponsesQ3.put(3, "2000");
+        ArrayList<String> reponsesQ3 = new ArrayList<>();
+        reponsesQ3.add("1000");
+        reponsesQ3.add("1357");
+        reponsesQ3.add("1899");
+        reponsesQ3.add("2000");
 
         ArrayList<String> bonneRep = new ArrayList<>();
         bonneRep.add("Paris");
@@ -122,7 +118,7 @@ public class QuizActivity extends AppCompatActivity {
         listQuestRep.put(questions.get(1), reponsesQ2);
         listQuestRep.put(questions.get(2), reponsesQ3);
 
-        ArrayList<HashMap> listes = new ArrayList<>();
+        ArrayList<ArrayList> listes = new ArrayList<>();
         listes.add(listQuestRep.get(questions.get(0)));
         listes.add(listQuestRep.get(questions.get(1)));
         listes.add(listQuestRep.get(questions.get(2)));
@@ -146,20 +142,33 @@ public class QuizActivity extends AppCompatActivity {
                         if (joueur.equals("1")){
                             score1[0] = String.valueOf(Integer.parseInt(score1[0]) + 1);
                             scoreJ1.setText(score1[0]);
-                            intent.putExtra("score1", scoreJ1.getText().toString());
+                            intent.putExtra("score1", score1[0]);
                             intent.putExtra("joueur", "1");
-                            intent.putExtra("score2", scoreJ2.getText().toString());
+                            intent.putExtra("score2", score2[0]);
                         }else {
                             score2[0] = String.valueOf(Integer.parseInt(score2[0]) + 1);
                             scoreJ2.setText(score2[0]);
-                            intent.putExtra("score2", scoreJ2.getText().toString());
+                            intent.putExtra("score2", score2[0] );
                             intent.putExtra("joueur", "2");
-                            intent.putExtra("score1", scoreJ1.getText().toString());
+                            intent.putExtra("score1", score1[0]);
                         }
 
 
                     } else {
                         bout.get(bouton.get(finalI)).setBackgroundColor(getResources().getColor(R.color.purple_500));
+
+                        if (joueur.equals("1")){
+                            scoreJ1.setText(score1[0]);
+                            intent.putExtra("score1", score1[0]);
+                            intent.putExtra("joueur", "1");
+                            intent.putExtra("score2", score2[0]);
+                        }else {
+                            scoreJ2.setText(score2[0]);
+                            intent.putExtra("score2", score2[0] );
+                            intent.putExtra("joueur", "2");
+                            intent.putExtra("score1", score1[0]);
+                        }
+
                     }
 
                     for (int i = 0; i < bouton.size(); i++) {

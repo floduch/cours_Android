@@ -41,6 +41,7 @@ public class DistrictActivity extends AppCompatActivity {
         intent.putExtra("score1", score1);
         intent.putExtra("joueur", joueur);
         intent.putExtra("score2", score2);
+
         Button accueil = findViewById(R.id.buttonAccueil);
 
         accueil.setOnClickListener(new View.OnClickListener() {
@@ -58,8 +59,6 @@ public class DistrictActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                Object o = gridView.getItemAtPosition(position);
-                District district = (District) o;
                 System.out.println(position);
                 Intent intent = new Intent(DistrictActivity.this, QuizActivity.class);
                 intent.putExtra("noQ", String.valueOf(position));
@@ -68,8 +67,6 @@ public class DistrictActivity extends AppCompatActivity {
                 intent.putExtra("score2", String.valueOf(score2));
 
                 startActivity(intent);
-//                Toast.makeText(DistrictActivity.this, "Selected :"
-//                        + " " + district, Toast.LENGTH_SHORT).show();
             }
         });
     }
